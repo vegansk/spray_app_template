@@ -1,22 +1,20 @@
-import spray.http.MediaTypes._
 import spray.routing.Directives._
+import rest._
 
 package object routes {
 
-  val routes = 
-    path("") {
+  import akka.actor.ActorRefFactory
+  import spray.routing.directives.ContentTypeResolver
+  import spray.util.LoggingContext
+
+
+  def routes(implicit resolver: ContentTypeResolver, refFactory: ActorRefFactory, log: LoggingContext) =
+    path("old") {
       get {
-        respondWithMediaType(`text/html`) { // XML is marshalled to `text/xml` by default, so we simply override here
-          complete {
-            <html>
-              <body>
-              <h1>Say hello to <i>spray-routing</i> on <i>spray-can</i>!</h1>
-              </body>
-              </html>
-          }
-        }
+        index
       }
+    } ~
+    pathPrefix("") {
+      getFromResourceDirectory("static_content")
     }
-
-
 }

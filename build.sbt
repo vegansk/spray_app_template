@@ -10,7 +10,8 @@ libraryDependencies ++= Seq(
   "io.spray"          %% "spray-testkit" % V.spray % "test" withSources() withJavadoc(),
   "com.typesafe.akka" %% "akka-actor"    % V.akka withSources() withJavadoc(),
   "com.typesafe.akka" %% "akka-testkit"  % V.akka % "test" withSources() withJavadoc(),
-  "org.specs2"        %% "specs2-core"   % V.specs2 % "test" withSources() withJavadoc()
+  "org.specs2"        %% "specs2-core"   % V.specs2 % "test" withSources() withJavadoc(),
+  "io.argonaut"       %% "argonaut"      % V.argonaut withSources() withJavadoc()
 )
 
 Revolver.settings

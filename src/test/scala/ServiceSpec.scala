@@ -5,14 +5,14 @@ import spray.http._
 import StatusCodes._
 import routes._
 
-class MyServiceSpec extends Specification with Specs2RouteTest with HttpService {
+class ServiceSpec extends Specification with Specs2RouteTest with HttpService {
   def actorRefFactory = system
 
   "Service" should {
 
     "return a greeting for GET requests to the root path" in {
-      Get() ~> routes ~> check {
-        responseAs[String] must contain("Say hello")
+      Get("/old") ~> routes ~> check {
+        handled must beTrue
       }
     }
 
@@ -23,7 +23,7 @@ class MyServiceSpec extends Specification with Specs2RouteTest with HttpService 
     }
 
     "return a MethodNotAllowed error for PUT requests to the root path" in {
-      Put() ~> sealRoute(routes) ~> check {
+      Put("/old") ~> sealRoute(routes) ~> check {
         status === MethodNotAllowed
         responseAs[String] === "HTTP method not allowed, supported methods: GET"
       }
