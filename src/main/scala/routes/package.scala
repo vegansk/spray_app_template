@@ -1,10 +1,9 @@
-import spray.routing._
-import spray.http._
-import MediaTypes._
+import spray.http.MediaTypes._
+import spray.routing.Directives._
 
-trait Routes extends HttpService {
+package object routes {
 
-  val routes =
+  val routes = 
     path("") {
       get {
         respondWithMediaType(`text/html`) { // XML is marshalled to `text/xml` by default, so we simply override here
@@ -18,5 +17,6 @@ trait Routes extends HttpService {
         }
       }
     }
-}
 
+
+}

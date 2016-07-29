@@ -1,8 +1,10 @@
 import akka.actor.Actor
+import spray.routing.HttpService
+import routes._
 
 // we don't implement our route structure directly in the service actor because
 // we want to be able to test it independently, without having to spin up an actor
-class ServiceActor extends Actor with Routes {
+class ServiceActor extends Actor with HttpService {
 
   // the HttpService trait defines only one abstract member, which
   // connects the services environment to the enclosing actor or test

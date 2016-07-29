@@ -1,11 +1,13 @@
 import org.specs2.mutable.Specification
+import spray.routing.HttpService
 import spray.testkit.Specs2RouteTest
 import spray.http._
 import StatusCodes._
+import routes._
 
-class MyServiceSpec extends Specification with Specs2RouteTest with Routes {
+class MyServiceSpec extends Specification with Specs2RouteTest with HttpService {
   def actorRefFactory = system
-  
+
   "Service" should {
 
     "return a greeting for GET requests to the root path" in {
