@@ -1,6 +1,7 @@
 import akka.actor.Actor
 import spray.routing.HttpService
 import routes._
+import scala.concurrent.ExecutionContext.Implicits.global
 
 // we don't implement our route structure directly in the service actor because
 // we want to be able to test it independently, without having to spin up an actor

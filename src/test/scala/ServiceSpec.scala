@@ -11,7 +11,7 @@ class ServiceSpec extends Specification with Specs2RouteTest with HttpService {
   "Service" should {
 
     "return a greeting for GET requests to the root path" in {
-      Get("/old") ~> routes ~> check {
+      Get("/") ~> routes ~> check {
         handled must beTrue
       }
     }
